@@ -4,12 +4,17 @@
         <li>{{ post.fields.title }}</li>
         <ul>
           <img
-            :src="post.fields.heroImage.fields.file.url"
-            :alt="post.fields.heroImage.fields.title"
-            max-width="400"
-            max-height="225"/>
+            :src="setEyeCatch(post).url"
+            :alt="setEyeCatch(post).title" />
           <li>{{ post.fields.body }}</li>
           <li>{{ post.fields.publishDate }}</li>
+          <li>
+            <NuxtLink
+              :to="linkTo(post)"
+            >
+              この記事をみる
+            </NuxtLink>
+          </li>
         </ul>
       </ul>
   </div>
@@ -17,8 +22,15 @@
 
 <script>
 import client from '~/plugins/contentful'
+import { mapGetters } from 'vuex'
 
-export default {
+export default {  
+  computed: {
+    ...mapGetters(['setEyeCatch']),
+    linkTo: () => (obj) => {
+      return { name: 'posts-slug', params: { slug: obj.fields.slug } }
+    }
+  },
   async asyncData({ env }) {
     let posts = []
     await client.getEntries({
