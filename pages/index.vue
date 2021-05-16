@@ -8,6 +8,7 @@
             :alt="setEyeCatch(post).title" />
           <li>{{ post.fields.body }}</li>
           <li>{{ post.fields.publishDate }}</li>
+          <li><span :is="draftChip(post)" /></li>
           <li>
             <NuxtLink
               :to="linkTo(post)"
@@ -22,11 +23,15 @@
 
 <script>
 import client from '~/plugins/contentful'
+import draftChip from '~/components/atoms/draftChip_atoms'
 import { mapGetters } from 'vuex'
 
 export default {  
+  components: {
+    draftChip
+  },
   computed: {
-    ...mapGetters(['setEyeCatch']),
+    ...mapGetters(['setEyeCatch', 'draftChip']),
     linkTo: () => (obj) => {
       return { name: 'posts-slug', params: { slug: obj.fields.slug } }
     }
