@@ -11,7 +11,7 @@
           <li><span :is="draftChip(post)" /></li>
           <li>
             <NuxtLink
-              :to="linkTo(post)"
+              :to="linkTo('posts', post)"
             >
               この記事をみる
             </NuxtLink>
@@ -22,27 +22,16 @@
 </template>
 
 <script>
-import client from '~/plugins/contentful'
 import draftChip from '~/components/atoms/draftChip_atoms'
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {  
   components: {
     draftChip
   },
   computed: {
-    ...mapGetters(['setEyeCatch', 'draftChip']),
-    linkTo: () => (obj) => {
-      return { name: 'posts-slug', params: { slug: obj.fields.slug } }
-    }
-  },
-  async asyncData({ env }) {
-    let posts = []
-    await client.getEntries({
-      content_type: env.CTF_BLOG_POST_TYPE_ID,
-      order: '-fields.publishDate'
-    }).then(res => (posts = res.items)).catch(console.error)
-    return { posts }
+    ...mapState(['posts']), 
+    ...mapGetters(['setEyeCatch', 'draftChip', 'linkTo']),
   }
 }
 </script>
