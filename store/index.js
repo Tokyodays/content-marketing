@@ -1,6 +1,10 @@
 import defaultEyeCatch from '~/assets/images/defaultEyeCatch.jpg'
 import client from '~/plugins/contentful'
 
+export const state = () => ({
+  posts: []
+})
+
 export const getters = {
   linkTo: () => (name, obj) => {
     return { name: `${name}-slug`, params: { slug: obj.fields.slug } }
@@ -31,5 +35,4 @@ export const actions = {
       commit('setPosts', res.items)
     ).catch(console.error)
   }
-
 }
