@@ -4,7 +4,7 @@
       {{ currentPost.fields.title }}
       <img
         :src="setEyeCatch(currentPost).url"
-        :alt="setEyeCatch(currentPost).url"
+        :alt="setEyeCatch(currentPost).title"
       />
       {{ currentPost.fields.publishDate }}<br>
       {{ currentPost.fields.body }}
@@ -32,8 +32,8 @@ export default {
   computed: {
     ...mapGetters(['setEyeCatch'])
   },
-  async asyncData({ payload, store, params, error }) {
-    const currentPost = payload || await store.state.posts.find(post => post.fields.slug === params.slug)
+  async asyncData({ store, params, error }) {
+    const currentPost = await store.state.posts.find(post => post.fields.slug === params.slug)
 
     if (currentPost) {
       return { currentPost }
