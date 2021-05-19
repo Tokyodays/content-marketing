@@ -9,6 +9,7 @@
           <li>{{ post.fields.body }}</li>
           <li>{{ post.fields.publishDate }}</li>
           <li><span :is="draftChip(post)" /></li>
+          <li>category:{{ post.fields.category.fields.name }}</li>
           <li>
             <NuxtLink
               :to="linkTo('posts', post)"
