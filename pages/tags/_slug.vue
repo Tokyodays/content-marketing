@@ -1,19 +1,23 @@
 <template>
   <div>
     <h1>{{ tag.fields.name }}</h1>
+    <div
+      v-for="(post, i) in relatedPosts"
+      :key="i"
+    >
+      {{ post.fields.title }}
+    </div>
   </div>
 </template>
 
 <script>
-import client from '~/plugins/contentful'
 export default {
-	async asyncData({ params, error, store, env }) {
-    const tag = await client.getEntries({
-      content_type: 'tag',
-      'fields.slug': params.slug
-    }).then(res => res.items[0]).catch(console.error)
+	asyncData({ params, error, store, env }) {
+    const tag = store.state.tags.find(tag => tag.fields.slug === params.slug)
+
     if (tag) {
-      return { tag }
+      const relatedPosts = store.getters.associatePosts(tag)
+      return { tag, relatedPosts }
     } else {
       error({ statusCode: 400 })
     }
