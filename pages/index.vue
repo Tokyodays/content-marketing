@@ -9,12 +9,24 @@
           <li>{{ post.fields.body }}</li>
           <li>{{ post.fields.publishDate }}</li>
           <li><span :is="draftChip(post)" /></li>
-          <li>
-                        <NuxtLink
+          <li><NuxtLink
               :to="linkTo('categories', post.fields.category)"
             >
 category:{{ post.fields.category.fields.name }}
 </NuxtLink>
+</li>
+<li>
+
+
+    <template v-if="post.fields.tag">
+      <div
+        v-for="(tag) in post.fields.tag"
+        :key="tag.sys.id"
+        to="#"
+      >
+        {{ tag.fields.name }}
+      </div>
+    </template>
 </li>
           <li>
             <NuxtLink
