@@ -16,16 +16,14 @@ category:{{ post.fields.category.fields.name }}
 </NuxtLink>
 </li>
 <li>
-
-
-    <template v-if="post.fields.tag">
-      <div
-        v-for="(tag) in post.fields.tag"
+    <template v-if="post.fields.tags">
+      <NuxtLink
+        v-for="(tag) in post.fields.tags"
         :key="tag.sys.id"
-        to="#"
+        :to="linkTo('tags', tag)"
       >
         {{ tag.fields.name }}
-      </div>
+      </NuxtLink>
     </template>
 </li>
           <li>
