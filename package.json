@@ -10,10 +10,17 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/markdownit": "^2.0.0",
     "@nuxtjs/pwa": "^3.3.5",
     "contentful": "^8.3.5",
     "core-js": "^3.8.3",
-    "nuxt": "^2.14.12"
+    "markdown-it-anchor": "^8.0.3",
+    "markdown-it-image-figures": "^1.2.0",
+    "markdown-it-table-of-contents": "^0.5.2",
+    "nuxt": "^2.14.12",
+    "nuxt-basic-auth-module": "^1.4.0",
+    "uslug": "^1.0.4",
+    "vue-feather-icons": "^5.1.0"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.4.2"

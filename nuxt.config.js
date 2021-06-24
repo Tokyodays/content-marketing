@@ -21,7 +21,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    'plugins/contentful'
+    '~/plugins/contentful',
+    '~/plugins/markdownit',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,7 +40,15 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/markdownit',
+    'nuxt-basic-auth-module'
   ],
+
+  basic: {
+    name: 'officepass',
+    pass: 'W7jdSx23',
+    enabled: process.env.ENABLE_BASIC_AUTH === 'true'
+  },
 
   router: {
     middleware: [
