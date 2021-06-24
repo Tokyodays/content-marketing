@@ -18,6 +18,7 @@
     "markdown-it-image-figures": "^1.2.0",
     "markdown-it-table-of-contents": "^0.5.2",
     "nuxt": "^2.14.12",
+    "nuxt-basic-auth-module": "^1.4.0",
     "uslug": "^1.0.4",
     "vue-feather-icons": "^5.1.0"
   },
