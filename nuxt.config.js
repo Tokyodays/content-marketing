@@ -46,8 +46,7 @@ export default {
 
   basic: {
     name: 'officepass',
-    pass: 'W7jdSx23',
-    enabled: process.env.ENABLE_BASIC_AUTH === 'true'
+    pass: 'W7jdSx23'
   },
 
   router: {
