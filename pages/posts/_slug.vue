@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container mx-auto px-4">
     <template v-if="currentPost">
       {{ currentPost.fields.title }}
       <img
@@ -7,7 +7,7 @@
         :alt="setEyeCatch(currentPost).title"
       />
       {{ currentPost.fields.publishDate }}<br>
-      {{ currentPost.fields.body }}
+      <div v-html="$md.render(currentPost.fields.body )"></div>
     </template>
 
     <template v-else>
