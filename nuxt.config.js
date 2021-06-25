@@ -40,8 +40,14 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    'nuxt-basic-auth-module'
   ],
+
+  basic: {
+    name: 'officepass',
+    pass: 'W7jdSx23'
+  },
 
   router: {
     middleware: [
