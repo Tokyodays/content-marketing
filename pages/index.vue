@@ -11,7 +11,7 @@
                 <p id="job" class="text-gray-800 mt-2">{{ post.fields.publishDate }}</p>
                 <div class="flex mt-5">
                   <img alt="avatar" class="w-6 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
-                  <p class="ml-3">John Doe</p>
+                  <p class="ml-3">{{ post.fields.author.fields.name }}</p>
                 </div>
             </div>
           </div>
